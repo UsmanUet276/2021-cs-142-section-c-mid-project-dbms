@@ -1,3 +1,4 @@
+</div>
         <footer class="footer mt-40">
             <div class="container-fluid">
                 <div class="row">
