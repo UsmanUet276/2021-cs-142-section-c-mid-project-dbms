@@ -23,6 +23,13 @@
     <link href="vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="vendor/semantic/semantic.min.css">
+
+    
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/instructor-dashboard.css" rel="stylesheet">
+    <link href="css/instructor-responsive.css" rel="stylesheet">
+    <link href="css/night-mode.css" rel="stylesheet">
 </head>
 
 <body>
@@ -100,21 +107,21 @@
             <div class="left_section">
                 <ul>
                     <li class="menu--item">
-                        <a href="instructor_dashboard.html" class="menu--link active" title="Dashboard">
+                        <a href="index.php" class="menu--link active" title="Dashboard">
                             <i class="uil uil-apps menu--icon"></i>
                             <span class="menu--label">Dashboard</span>
                         </a>
                     </li>
                     <li class="menu--item">
-                        <a href="instructor_courses.html" class="menu--link" title="Courses">
+                        <a href="addStudent.php" class="menu--link" title="Courses">
                             <i class='uil uil-book-alt menu--icon'></i>
-                            <span class="menu--label">Courses</span>
+                            <span class="menu--label">Add Student</span>
                         </a>
                     </li>
                     <li class="menu--item">
-                        <a href="instructor_analyics.html" class="menu--link" title="Analyics">
+                        <a href="addAdvisor.php" class="menu--link" title="Analyics">
                             <i class='uil uil-analysis menu--icon'></i>
-                            <span class="menu--label">Analyics</span>
+                            <span class="menu--label">Add Advisor</span>
                         </a>
                     </li>
                     <li class="menu--item">
@@ -192,3 +199,5 @@
         </div>
     </nav>
     <div class="wrapper">
+        
+<div style="margin-left:40px;">
