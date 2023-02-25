@@ -9,6 +9,10 @@
     {
         echo "<script>alert('Data Entered Successfully')</script>";
     }
+    if(isset($_GET["status"]) && $_GET["status"]==2)
+    {
+        echo "<script>alert('Advisor Already Exists')</script>";
+    }
 ?>
 <div class="sa4d25">
             <div class="container-fluid">

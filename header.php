@@ -114,13 +114,14 @@
                     </li>
                     <li class="menu--item">
                         <a href="addStudent.php" class="menu--link" title="Courses">
-                            <i class='uil uil-book-alt menu--icon'></i>
+                            <i class='uil uil-plus-circle  menu--icon'></i>
                             <span class="menu--label">Add Student</span>
                         </a>
                     </li>
+                    
                     <li class="menu--item">
                         <a href="addAdvisor.php" class="menu--link" title="Analyics">
-                            <i class='uil uil-analysis menu--icon'></i>
+                            <i class='uil uil-plus-circle menu--icon'></i>
                             <span class="menu--label">Add Advisor</span>
                         </a>
                     </li>
@@ -131,21 +132,40 @@
                         </a>
                     </li>
                     <li class="menu--item">
-                        <a href="instructor_messages.html" class="menu--link" title="Messages">
-                            <i class='uil uil-comments menu--icon'></i>
-                            <span class="menu--label">Messages</span>
+                        <a href="delStudent.php" class="menu--link" title="Messages">
+                            <i class='uil uil-analysis menu--icon'></i>
+                            <span class="menu--label">Delete Student</span>
                         </a>
                     </li>
                     <li class="menu--item">
-                        <a href="instructor_notifications.html" class="menu--link" title="Notifications">
-                            <i class='uil uil-bell menu--icon'></i>
-                            <span class="menu--label">Notifications</span>
+                        <a href="deleteAdvisor.php" class="menu--link" title="Messages">
+                            <i class='uil uil-analysis menu--icon'></i>
+                            <span class="menu--label">Delete Advisor</span>
                         </a>
                     </li>
                     <li class="menu--item">
-                        <a href="instructor_my_certificates.html" class="menu--link" title="My Certificates">
-                            <i class='uil uil-award menu--icon'></i>
-                            <span class="menu--label">My Certificates</span>
+                        <a href="updateStudent.php" class="menu--link" title="Notifications">
+                            <i class='uil uil-file-alt menu--icon'></i>
+                            <span class="menu--label">Update Student</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="updateAdvisor.php" class="menu--link" title="Notifications">
+                            <i class='uil uil-file-alt menu--icon'></i>
+                            <span class="menu--label">Update Advisor</span>
+                        </a>
+                    </li>
+                    <!--uil-bell-->
+                    <li class="menu--item">
+                        <a href="showStudents.php" class="menu--link" title="My Certificates">
+                            <i class='uil uil-book-alt menu--icon'></i>
+                            <span class="menu--label">Show All Students</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="showAdv.php" class="menu--link" title="My Certificates">
+                            <i class='uil uil-book-alt menu--icon'></i>
+                            <span class="menu--label">Show All Advisors</span>
                         </a>
                     </li>
                     <li class="menu--item">
@@ -199,5 +219,3 @@
         </div>
     </nav>
     <div class="wrapper">
-        
-<div style="margin-left:40px;">
