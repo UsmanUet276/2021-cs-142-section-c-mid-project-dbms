@@ -43,6 +43,31 @@ class db {
         $stmt->execute();
         return $stmt->rowCount();
     }
+
+    public static function getRecord($query) {
+        $stmt = self::$conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    public static function insertRecord($query) {
+        $stmt = self::$conn->prepare($query);
+        $stmt->execute();
+        return self::$conn->lastInsertId();
+    }
+    
+    public static function deleteRecord($query) {
+        $stmt = self::$conn->prepare($query);
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
+    }
+    
+    public static function updateRecord($query) {
+        $stmt = self::$conn->prepare($query);
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
+    }
+    
 }
 
 // Connect to database automatically when the file is included
