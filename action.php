@@ -1,6 +1,5 @@
 <?php
     include('database.php');
-
     if(isset($_POST['stu']))
     {
         $name = $_POST['name'];
@@ -10,7 +9,7 @@
         $dob = $_POST['dob'];
         $gender = $_POST['gen'];
         $roll = $_POST['roll'];
-        $query = "SELECT * FROM Student WHERE RegistrationNo = $roll";
+        $query = "SELECT * FROM Student as s INNER JOIN Person as p ON s.Id = p.Id WHERE s.RegistrationNo = '$roll' OR p.Email = '$email'";
         $res = db::getRecords($query);
         $count = 0;
         foreach($res as $t)
@@ -26,7 +25,7 @@
         {
             $query = "INSERT INTO Person(FirstName, LastName, Contact, Email, DateOfBirth,Gender) values('$name','$surname','$pno','$email','$dob','$gender')";
             $res = db::insertRecords($query);
-            $query = "INSERT INTO Student(Id,RegistrationNo) values((SELECT MAX(Id) FROM Person) , $roll)";
+            $query = "INSERT INTO Student(Id,RegistrationNo) values((SELECT MAX(Id) FROM Person) , '$roll')";
             $res = db::insertRecords($query);
             echo "<script>location='addStudent.php?status=1'</script>";
         }
@@ -34,7 +33,7 @@
     if(isset($_POST['delstu']))
     {
         $roll = $_POST['roll'];
-        $query = "SELECT Id FROM Student WHERE RegistrationNo = $roll";
+        $query = "SELECT Id FROM Student WHERE RegistrationNo = '$roll'";
         $res = db::getRecord($query);
 
         if ($res != false)
@@ -56,7 +55,7 @@
     {
         $roll = $_POST['roll'];
 
-        $query = "SELECT Id FROM Student Where RegistrationNo = $roll";
+        $query = "SELECT Id FROM Student Where RegistrationNo = '$roll'";
         $res = db::getRecord($query);
 
         if($res == false)
@@ -80,10 +79,27 @@
         $gen = $_POST['gen'];
         session_start();
         $id = $_SESSION["Id"];
-        $query = "UPDATE Person SET FirstName = '$name', LastName = '$surname', Contact = '$pno', Email = '$email', DateOfBirth = '$dob', Gender='$gen' Where Id = $id";
-        $res = db::updateRecord($query);
-        session_destroy();
-        echo "<script>location='updateStudent.php?status=3'</script>";
+        $query = "SELECT Email FROM Person WHERE Id = $id";
+        $Email = db::getRecord($query);
+        $query = "SELECT * FROM Person  WHERE Email = '$email'";
+        $res = db::getRecords($query);
+        $count = 0;
+        foreach($res as $t)
+        {
+            $count ++;
+        }
+        echo $count;
+        if($count >= 1 && $Email['Email'] != $email)
+        {
+            echo "<script>location='editStudent.php?status=2'</script>";
+        }
+        else
+        {
+            $query = "UPDATE Person SET FirstName = '$name', LastName = '$surname', Contact = '$pno', Email = '$email', DateOfBirth = '$dob', Gender='$gen' Where Id = $id";
+            $res = db::updateRecord($query);
+            session_destroy();
+            echo "<script>location='updateStudent.php?status=3'</script>";
+        }
     }
     if(isset($_POST['adv']))
     {
@@ -173,6 +189,15 @@
             echo "<script>location='delAdvisor.php?status=2'</script>";
         }
         
+    }
+    if(isset($_POST['addpro']))
+    {
+        $title = $_POST['title'];
+        $des = $_POST['des'];
+
+        $query = "INSERT INTO Project ([Title], [Description]) VALUES ('$title' , '$des')";
+        $res = db::insertRecord($query);
+        echo "<script>location='addProject.php?status=1'</script>";
     }
 
 ?>
