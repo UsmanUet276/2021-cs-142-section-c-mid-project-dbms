@@ -3,7 +3,7 @@
     include("database.php");
     $query = "SELECT COUNT(*) FROM Student";
     $res = db::getRecords($query);
-    $stu = $res[0][''];
+    $stu = $res[0][''];       
 
     $query = "SELECT COUNT(*) FROM [Group]";
     $res = db::getRecords($query);

@@ -6,7 +6,10 @@
     }
     include("header.php");
     include("database.php");
-
+    if(isset($_GET["status"]) && $_GET["status"]==2)
+    {
+        echo "<script>alert('Email Already exists')</script>";
+    }
     $query = "SELECT * FROM Lookup where Category = 'GENDER'";
     $res = db::getRecords($query);
     $id = $_SESSION["Id"];
