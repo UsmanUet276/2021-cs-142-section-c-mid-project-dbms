@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from gambolthemes.net/html-items/cursus_main_demo/setting.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 Feb 2023 02:59:31 GMT -->
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, shrink-to-fit=9">
     <meta name="description" content="Gambolthemes">
     <meta name="author" content="Gambolthemes">
-    <title>Cursus - Setting</title>
+    <title>FinalTrack - Keep Tabs on Your Final Year Projects</title>
 
     <link rel="icon" type="image/png" href="images/fav.png">
 
@@ -91,12 +89,12 @@
                                 </span>
                             </a>
                         </div>
-                        <!-- <a href="instructor_dashboard.html" class="item channel_item">Cursus dashboard</a>
+                        <a href="instructor_dashboard.html" class="item channel_item">Cursus dashboard</a>
                         <a href="membership.html" class="item channel_item">Paid Memberships</a>
                         <a href="setting.html" class="item channel_item">Setting</a>
                         <a href="help.html" class="item channel_item">Help</a>
                         <a href="feedback.html" class="item channel_item">Send Feedback</a>
-                        <a href="sign_in.html" class="item channel_item">Sign Out</a> -->
+                        <a href="sign_in.html" class="item channel_item">Sign Out</a>
                     </div>
                 </li>
             </ul>
@@ -155,11 +153,62 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="menu--item">
-                        <a href="addProject.php" class="menu--link" title="Analyics">
-                            <i class='uil uil-plus-circle menu--icon'></i>
-                            <span class="menu--label">Add Project</span>
-                        </a>
+                    <li class="menu--item  menu--item__has_sub_menu">
+                        <label class="menu--link" title="Tests">
+                            <i class='uil uil-clipboard-alt menu--icon'></i>
+                            <span class="menu--label">Manage Project</span>
+                        </label>
+                        <ul class="sub_menu">
+                            <li class="sub_menu--item">
+                                <a href="addProject.php" class="sub_menu--link">Add Project</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="deleteProject.php" class="sub_menu--link">Delete Project</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="updateProject.php" class="sub_menu--link">Update Project</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="showProject.php" class="sub_menu--link">Show All Project</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu--item  menu--item__has_sub_menu">
+                        <label class="menu--link" title="Tests">
+                            <i class='uil uil-clipboard-alt menu--icon'></i>
+                            <span class="menu--label">Manage Group</span>
+                        </label>
+                        <ul class="sub_menu">
+                            <li class="sub_menu--item">
+                                <a href="createStudentGroup.php" class="sub_menu--link">Add Group</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="addStuToGroup.php" class="sub_menu--link">Add Student to Group</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="delStuToGroup.php" class="sub_menu--link">Remove Stu From Group</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu--item  menu--item__has_sub_menu">
+                        <label class="menu--link" title="Tests">
+                            <i class='uil uil-clipboard-alt menu--icon'></i>
+                            <span class="menu--label">Manage Evaluation ethos</span>
+                        </label>
+                        <ul class="sub_menu">
+                            <li class="sub_menu--item">
+                                <a href="addEvaluation.php" class="sub_menu--link">Add Evaluation</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="delEvaluation.php" class="sub_menu--link">Delete Evaluation</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="updateEvaluation.php" class="sub_menu--link">Update Evaluation</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="ShowEvaluation.php" class="sub_menu--link">Show all Evaluation</a>
+                            </li>
+                        </ul>
                     </li>
                     <!--uil-bell-->
                     <!-- <li class="menu--item">
@@ -225,15 +274,15 @@
             <div class="left_section pt-2">
                 <ul>
                     <li class="menu--item">
-                        <a href="setting.html" class="menu--link" title="Setting">
+                        <a href="addProjectAdvisor.php" class="menu--link" title="Setting">
                             <i class='uil uil-cog menu--icon'></i>
-                            <span class="menu--label">Setting</span>
+                            <span class="menu--label">Add Project Advisor</span>
                         </a>
                     </li>
                     <li class="menu--item">
-                        <a href="feedback.html" class="menu--link" title="Send Feedback">
+                        <a href="EvaluateGroup.php" class="menu--link" title="Send Feedback">
                             <i class='uil uil-comment-alt-exclamation menu--icon'></i>
-                            <span class="menu--label">Send Feedback</span>
+                            <span class="menu--label">Evaluate Group</span>
                         </a>
                     </li>
                 </ul>
