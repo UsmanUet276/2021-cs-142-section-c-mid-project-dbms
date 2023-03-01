@@ -3,6 +3,27 @@
     include("database.php");
     $query = "SELECT * FROM Project";
     $res = db::getRecords($query);
+
+    if(isset($_GET["status"]) && $_GET["status"]==1)
+    {
+        echo "<script>alert('Data Not Entered')</script>";
+    }
+    else if(isset($_GET["status"]) && $_GET["status"]==2)
+    {
+        echo "<script>alert('Designation Updated!')</script>";
+    }
+    else if(isset($_GET["status"]) && $_GET["status"]==3)
+    {
+        echo "<script>alert('Title Updated!')</script>";
+    }
+    else if(isset($_GET["status"]) && $_GET["status"]==4)
+    {
+        echo "<script>alert('Designation and Title Updated')</script>";
+    }
+    else if(isset($_GET["status"]) && $_GET["status"]==5)
+    {
+        echo "<script>alert('Select Title!')</script>";
+    }
 ?>
        <div class="sa4d25">
             <div class="container-fluid">
@@ -27,7 +48,7 @@
                                                             <div class="ui search focus mt-30">
                                                                 <div class="ui left icon input swdh11 swdh19">
                                                                     <select class="ui hj145 dropdown cntry152 prompt srch_explore" name="gen">
-                                                                            <option value="">Select Project Title</option>
+                                                                            <option value="0">Select Project Title</option>
                                                                             <?php 
                                                                             foreach($res as $pro)
                                                                             {
@@ -44,7 +65,7 @@
                                                                 <div class="ui left icon input swdh11 swdh19">
                                                                     <input class="prompt srch_explore" type="text"
                                                                         name="title"  id="id[surname]"
-                                                                        required="" maxlength="64"
+                                                                         maxlength="64"
                                                                         placeholder="Title">
                                                                 </div>
                                                             </div>
@@ -58,8 +79,7 @@
                                                                             placeholder="Write a little description about project..."></textarea>
                                                                     </div>
                                                                 </div>
-                                                                <div class="help-block">Links and coupon codes are not
-                                                                    permitted in this section.</div>
+                                                                <div class="help-block">Leave Empty If you dont want to edit any field</div>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-12">
@@ -70,7 +90,7 @@
                                             </div>
                                         </div>
                                         
-                                    <button class="save_btn" type="submit" name="addpro">Submit</button>
+                                    <button class="save_btn" type="submit" name="uppro">Submit</button>
                                     <form>
                                     </div>
                                 </div>

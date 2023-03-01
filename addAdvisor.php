@@ -13,6 +13,10 @@
     {
         echo "<script>alert('Advisor Already Exists')</script>";
     }
+    if(isset($_GET["status"]) && $_GET["status"]==3)
+    {
+        echo "<script>alert('Fill Gender and Designation')</script>";
+    }
 ?>
 <div class="sa4d25">
             <div class="container-fluid">
@@ -87,7 +91,7 @@
                                                             <div class="ui search focus mt-30">
                                                                 <div class="ui left icon input swdh11 swdh19">
                                                                     <select class="ui hj145 dropdown cntry152 prompt srch_explore" name="gen">
-                                                                            <option value="">Select Gender</option>
+                                                                            <option value="0">Select Gender</option>
                                                                             <?php 
                                                                             foreach($res1 as $gen)
                                                                             {
@@ -113,7 +117,7 @@
                                                             <div class="ui search focus mt-30">
                                                                 <div class="ui left icon input swdh11 swdh19">
                                                                     <select class="ui hj145 dropdown cntry152 prompt srch_explore" name="des">
-                                                                            <option value="">Select Designation of Advisor</option>
+                                                                            <option value="0">Select Designation of Advisor</option>
                                                                             <?php 
                                                                             foreach($res as $des)
                                                                             {
