@@ -2,6 +2,14 @@
     include("header.php");
     include("database.php");
     
+    if(isset($_GET["status"]) && $_GET["status"]==1)
+    {
+        echo "<script>alert('Data Deleted Successfully')</script>";
+    }
+    if(isset($_GET["status"]) && $_GET["status"]==2)
+    {
+        echo "<script>alert('No Project found of same title')</script>";
+    }
 ?>
        <div class="sa4d25">
             <div class="container-fluid">

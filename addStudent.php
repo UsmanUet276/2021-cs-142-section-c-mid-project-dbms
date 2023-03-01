@@ -11,6 +11,10 @@
     {
         echo "<script>alert('Student already exists')</script>";
     }
+    if(isset($_GET["status"]) && $_GET["status"]==3)
+    {
+        echo "<script>alert('Select Gender')</script>";
+    }
 ?>
        <div class="sa4d25">
             <div class="container-fluid">
@@ -85,7 +89,7 @@
                                                             <div class="ui search focus mt-30">
                                                                 <div class="ui left icon input swdh11 swdh19">
                                                                     <select class="ui hj145 dropdown cntry152 prompt srch_explore" name="gen">
-                                                                            <option value="">Select Gender</option>
+                                                                            <option value="0">Select Gender</option>
                                                                             <?php 
                                                                             foreach($res as $gen)
                                                                             {

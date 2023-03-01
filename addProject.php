@@ -5,6 +5,10 @@
     {
         echo "<script>alert('Data Enetered Successfully')</script>";
     }
+    if(isset($_GET["status"]) && $_GET["status"]==2)
+    {
+        echo "<script>alert('Project already exists')</script>";
+    }
 ?>
        <div class="sa4d25">
             <div class="container-fluid">
@@ -40,7 +44,7 @@
                                                                 <div class="ui form swdh30">
                                                                     <div class="field">
                                                                         <textarea rows="3" name="des"
-                                                                            id="id_about"
+                                                                            id="id_about" required
                                                                             placeholder="Write a little description about project..."></textarea>
                                                                     </div>
                                                                 </div>

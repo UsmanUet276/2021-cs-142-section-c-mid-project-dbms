@@ -32,7 +32,7 @@
                                                                             foreach($res2 as $pro)
                                                                             {
                                                                             
-                                                                            echo '<option value="'. $pro['Id'].'">'.$pro['Created_On'] .'</option>';
+                                                                            echo '<option value="'. $pro['Id'].'">'.$pro['Id'] . " - ".$pro['Created_On'] .'</option>';
                                                                             }
                                                                             ?>
                                                                     </select>
