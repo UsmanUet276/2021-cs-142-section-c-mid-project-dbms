@@ -1,6 +1,15 @@
 <?php
     include("header.php");
     include("database.php");
+
+    if(isset($_GET["status"]) && $_GET["status"]==1)
+    {
+        echo "<script>alert('Student is not found or not in any group')</script>";
+    }
+    if(isset($_GET["status"]) && $_GET["status"]==2)
+    {
+        echo "<script>alert('Removed!')</script>";
+    }
 ?>
        <div class="sa4d25">
             <div class="container-fluid">
@@ -40,7 +49,7 @@
                                             </div>
                                         </div>
                                         
-                                    <button class="save_btn" type="submit" name="addpro">Submit</button>
+                                    <button class="save_btn" type="submit" name="delStuGroup">Submit</button>
                                     <form>
                                     </div>
                                 </div>

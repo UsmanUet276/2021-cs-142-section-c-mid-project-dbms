@@ -1,7 +1,14 @@
 <?php
     include("header.php");
     include("database.php");
-    
+    if(isset($_GET["status"]) && $_GET["status"]==1)
+    {
+        echo "<script>alert('Evaluation Does not Exists')</script>";
+    }
+    if(isset($_GET["status"]) && $_GET["status"]==2)
+    {
+        echo "<script>alert('Data Deleted Successfully')</script>";
+    }
 ?>
        <div class="sa4d25">
             <div class="container-fluid">
@@ -40,7 +47,7 @@
                                             </div>
                                         </div>
                                         
-                                    <button class="save_btn" type="submit" name="delpro">Submit</button>
+                                    <button class="save_btn" type="submit" name="deleval">Submit</button>
                                     <form>
                                     </div>
                                 </div>

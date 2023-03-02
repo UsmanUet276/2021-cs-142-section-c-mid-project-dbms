@@ -9,10 +9,12 @@
         $dob = $_POST['dob'];
         $gender = $_POST['gen'];
         $roll = $_POST['roll'];
-        if($gen == 0)
+        if($gender == "")
         {
             echo "<script>location='addStudent.php?status=3'</script>";
         }
+        else
+        {
         $query = "SELECT * FROM Student as s INNER JOIN Person as p ON s.Id = p.Id WHERE s.RegistrationNo = '$roll' OR p.Email = '$email'";
         $res = db::getRecords($query);
         $count = 0;
@@ -34,7 +36,8 @@
             echo "<script>location='addStudent.php?status=1'</script>";
         }
     }
-    if(isset($_POST['delstu']))
+    }
+    else if(isset($_POST['delstu']))
     {
         $roll = $_POST['roll'];
         $query = "SELECT Id FROM Student WHERE RegistrationNo = '$roll'";
@@ -55,7 +58,7 @@
         }
         
     }
-    if(isset($_POST['upstu']))
+    else if(isset($_POST['upstu']))
     {
         $roll = $_POST['roll'];
 
@@ -73,7 +76,7 @@
             echo "<script>location='editStudent.php?status=1'</script>";
         }
     }
-    if(isset($_POST['editstu']))
+    else if(isset($_POST['editstu']))
     {
         $name = $_POST['name'];
         $surname = $_POST['surname'];
@@ -105,43 +108,8 @@
             echo "<script>location='updateStudent.php?status=3'</script>";
         }
     }
-    if(isset($_POST['adv']))
-    {
-        $name = $_POST['name'];
-        $surname = $_POST['surname'];
-        $pno = $_POST['pno'];
-        $email = $_POST['email'];
-        $dob = $_POST['dob'];
-        $gender = $_POST['gen'];
-        $salary = $_POST['salary'];
-        $des = $_POST['des'];
-        $query = "SELECT * FROM Person WHERE Email = '$email'";
-        $res = db::getRecords($query);
-        $count = 0;
-        if($gender == 0 || $des == 0)
-        {
-            echo "<script>location='addAdvisor.php?status=3'</script>";
-        }
-        foreach($res as $t)
-        {
-            $count ++;
-        }
-        echo $count;
-        if($count >= 1)
-        {
-            echo "<script>location='addAdvisor.php?status=2'</script>";
-        }
-        else
-        {
-            
-        $query = "INSERT INTO Person(FirstName, LastName, Contact, Email, DateOfBirth,Gender) values('$name','$surname','$pno','$email','$dob','$gender')";
-        $res = db::insertRecords($query);
-        $query = "INSERT INTO Advisor(Id, Designation, Salary) values((SELECT MAX(Id) FROM Person) ,'$des','$salary')";
-        $res = db::insertRecords($query);
-        echo "<script>location='addAdvisor.php?status=1'</script>";
-        }
-    }
-    if(isset($_POST['upadv']))
+    
+    else if(isset($_POST['upadv']))
     {
         $email = $_POST['email'];
 
@@ -159,7 +127,7 @@
             echo "<script>location='editAdvisor.php?status=1'</script>";
         }
     }
-    if(isset($_POST['editadv']))
+    else if(isset($_POST['editadv']))
     {
         $name = $_POST['name'];
         $surname = $_POST['surname'];
@@ -177,7 +145,7 @@
         session_destroy();
         echo "<script>location='updateAdvisor.php?status=3'</script>";
     }
-    if(isset($_POST['deladv']))
+    else if(isset($_POST['deladv']))
     {
         $email = $_POST['email'];
         $query = "SELECT Id FROM Person WHERE Email = $email";
@@ -198,7 +166,7 @@
         }
         
     }
-    if(isset($_POST['addpro']))
+    else if(isset($_POST['addpro']))
     {
         $title = $_POST['title'];
         $des = $_POST['des'];
@@ -213,7 +181,7 @@
         $res = db::insertRecord($query);
         echo "<script>location='addProject.php?status=1'</script>";
     }
-    if(isset($_POST['delpro']))
+    else if(isset($_POST['delpro']))
     {
         $title = $_POST['title'];
 
@@ -231,7 +199,7 @@
             echo "<script>location='deleteProject.php?status=2'</script>";
         }
     }
-    if(isset($_POST['uppro']))
+    else if(isset($_POST['uppro']))
     {
         $title = $_POST['title'];
         $des = $_POST['des'];
@@ -264,7 +232,7 @@
             echo "<script>location='updateProject.php?status=4'</script>";
         }
     }
-    if(isset($_POST['creGroup']))
+    else if(isset($_POST['creGroup']))
     {
         $gen = $_POST['gen'];
         $roll = $_POST['roll'];
@@ -300,8 +268,155 @@
         echo "<script>location='createStudentGroup.php?status=4'</script>";
         }
     }
-    if(isset($_POST['addstuGroup']))
+    else if(isset($_POST['addstuGroup']))
     {
+        $id = $_POST['gen'];
+        $roll = $_POST['roll'];
 
+        if($id == "")
+        {
+            echo "<script>location='addStuToGroup.php?status=1'</script>";
+        }
+        $query = "SELECT COUNT(*) FROM Student WHERE RegistrationNo = '$roll'";
+        $res = db::getRecord($query);
+        if($res[''] == 0)
+        {
+            echo "<script>location='addStuToGroup.php?status=2'</script>";
+        }
+
+        $query = "SELECT COUNT(*) FROM GroupStudent 
+        WHERE StudentId = (SELECT Id FROM Student WHERE RegistrationNo = '$roll') 
+        and 
+        [Status] = (SELECT Id FROM Lookup WHERE Category = 'STATUS' and [Value] = 'Active')";
+        $res = db::getRecord($query);
+        if($res[''] > 0)
+        {
+            echo "<script>location='addStuToGroup.php?status=4'</script>";
+        }
+
+        $query = "INSERT INTO GroupStudent (GroupId,StudentId, [Status] , AssignmentDate) 
+        VALUES ('$id' , 
+        (SELECT Id FROM Student WHERE RegistrationNo = '$roll'),
+        (SELECT Id FROM Lookup WHERE Category = 'STATUS' and [Value] = 'Active'), getdate())";
+        $res = db::insertRecord($query);
+        echo "<script>location='addStuToGroup.php?status=3'</script>";
     }
+    else if(isset($_POST['delStuGroup']))
+    {
+        $roll = $_POST['roll'];
+
+        $query = "SELECT COUNT(*) FROM GroupStudent WHERE StudentId = (SELECT Id FROM Student WHERE RegistrationNo = '$roll') and [Status] = (SELECT Id FROM Lookup WHERE Category = 'STATUS' and [Value] = 'Active')";
+        $res = db::getRecord($query);
+
+        if($res[''] == 0)
+        {
+            echo "<script>location='delStuToGroup.php?status=1'</script>";
+        }
+        else
+        {
+            $query = "UPDATE GroupStudent SET [Status] = (SELECT Id FROM Lookup WHERE Category = 'STATUS' and [Value] = 'InActive')";
+            $res = db::updateRecord($query);
+            echo "<script>location='delStuToGroup.php?status=2'</script>";
+        }
+    }
+    else if(isset($_POST['addeval']))
+    {
+        $name = $_POST['name'];
+        $marks = $_POST['marks'];
+        $weight = $_POST['weight'];
+
+        $query = "SELECT COUNT(*) FROM Evaluation WHERE [Name] = '$name'";
+        $res = db::getRecord($query);
+        if($res[''] > 0)
+        {
+            echo "<script>location='addEvaluation.php?status=1'</script>";
+        }
+        else
+        {
+            $query = "INSERT INTO Evaluation ([Name],TotalMarks, TotalWeightage) VALUES ('$name','$marks','$weight')";
+            $res = db::insertRecord($query);
+            echo "<script>location='addEvaluation.php?status=2'</script>";
+        }
+    }
+    else if(isset($_POST['deleval']))
+    {
+        $name = $_POST['title'];
+
+        $query = "SELECT COUNT(*) FROM Evaluation WHERE [Name] = '$name'";
+        $res = db::getRecord($query);
+        if($res[''] == 0)
+        {
+            echo "<script>location='delEvaluation.php?status=1'</script>";
+        }
+        else
+        {
+            $query = "DELETE FROM Evaluation WHERE [Name] = '$name'";
+            $res = db::deleteRecord($query);
+            echo "<script>location='delEvaluation.php?status=2'</script>";
+        }
+    }
+    else if(isset($_POST['pa']))
+    {
+        $advrol = $_POST['advrol'];
+        $adv = $_POST['adv'];
+        $pro = $_POST['pro'];
+
+        
+        if($advrol == "" || $adv == "" || $pro == "")
+        {
+            echo "<script>location='addProjectAdvisor.php?status=1'</script>";
+        }
+        else
+        {
+            $query = "SELECT COUNT(*) FROM ProjectAdvisor WHERE ProjectId = '$pro' and (AdvisorId = '$adv' or AdvisorRole='$advrol')";
+            $res = db::getRecord($query);
+            if($res[''] > 0)
+            {
+                 echo "<script>location='addProjectAdvisor.php?status=2'</script>";
+            }
+            else
+            {
+                $query = "INSERT INTO ProjectAdvisor (AdvisorId, ProjectId, AdvisorRole,AssignmentDate) VALUES ('$adv','$pro','$advrol',getdate())";
+                $res = db::insertRecord($query);
+                echo "<script>location='addProjectAdvisor.php?status=3'</script>";
+            }
+        }
+    }
+    else if(isset($_POST['adv']))
+    {
+        $name = $_POST['name'];
+        $surname = $_POST['surname'];
+        $pno = $_POST['pno'];
+        $email = $_POST['email'];
+        $dob = $_POST['dob'];
+        $gender = $_POST['gen'];
+        $salary = $_POST['salary'];
+        $des = $_POST['des'];
+        $query = "SELECT * FROM Person WHERE Email = '$email'";
+        $res = db::getRecords($query);
+        $count = 0;
+        if($gender == 0 || $des == 0)
+        {
+            echo "<script>location='addAdvisor.php?status=3'</script>";
+        }
+        foreach($res as $t)
+        {
+            $count ++;
+        }
+        echo $count;
+        if($count >= 1)
+        {
+            echo "<script>location='addAdvisor.php?status=2'</script>";
+        }
+        else
+        {
+            
+        $query = "INSERT INTO Person(FirstName, LastName, Contact, Email, DateOfBirth,Gender) values('$name','$surname','$pno','$email','$dob','$gender')";
+        $res = db::insertRecords($query);
+        $query = "INSERT INTO Advisor(Id, Designation, Salary) values((SELECT MAX(Id) FROM Person) ,'$des','$salary')";
+        $res = db::insertRecords($query);
+        echo "<script>location='addAdvisor.php?status=1'</script>";
+        }
+    }
+    
 ?>

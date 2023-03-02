@@ -3,6 +3,23 @@
     include("database.php");
     $query = "SELECT * FROM [Group]";
     $res2 = db::getRecords($query);
+
+    if(isset($_GET["status"]) && $_GET["status"]==1)
+    {
+        echo "<script>alert('Select Group')</script>";
+    }
+    if(isset($_GET["status"]) && $_GET["status"]==2)
+    {
+        echo "<script>alert('Student dont found')</script>";
+    }
+    if(isset($_GET["status"]) && $_GET["status"]==3)
+    {
+        echo "<script>alert('Data Inserted Successfully!')</script>";
+    }
+    if(isset($_GET["status"]) && $_GET["status"]==4)
+    {
+        echo "<script>alert('Student is already in group')</script>";
+    }
 ?>
        <div class="sa4d25">
             <div class="container-fluid">
@@ -57,7 +74,7 @@
                                             </div>
                                         </div>
                                         
-                                    <button class="save_btn" type="submit" name="addpro">Submit</button>
+                                    <button class="save_btn" type="submit" name="addstuGroup">Submit</button>
                                     <form>
                                     </div>
                                 </div>

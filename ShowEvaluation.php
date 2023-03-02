@@ -33,7 +33,7 @@
                                             ?>
                                             <tbody>
                                                 <tr>
-                                                    <td class="text-center"><?php echo $stu['Name'] ." ". $stu['LastName']; ?></td>
+                                                    <td class="text-center"><?php echo $stu['Name']; ?></td>
                                                     <td class="text-center"><?php echo $stu['TotalMarks'];?></td>
                                                     <td class="text-center"><?php echo $stu['TotalWeightage'];?></td>
                                                 </tr>

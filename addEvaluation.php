@@ -1,7 +1,14 @@
 <?php
     include("header.php");
     include("database.php");
-    
+    if(isset($_GET["status"]) && $_GET["status"]==1)
+    {
+        echo "<script>alert('Evaluation Already Exists')</script>";
+    }
+    if(isset($_GET["status"]) && $_GET["status"]==2)
+    {
+        echo "<script>alert('Data Entered Successfully')</script>";
+    }
 ?>
        <div class="sa4d25">
             <div class="container-fluid">
@@ -26,7 +33,7 @@
                                                             <div class="ui search focus mt-30">
                                                                 <div class="ui left icon input swdh11 swdh19">
                                                                     <input class="prompt srch_explore" type="text"
-                                                                        name="title"  id="id[surname]"
+                                                                        name="name"  id="id[surname]"
                                                                         required="" maxlength="64"
                                                                         placeholder="Name">
                                                                 </div>
@@ -36,7 +43,7 @@
                                                             <div class="ui search focus mt-30">
                                                                 <div class="ui left icon input swdh11 swdh19">
                                                                     <input class="prompt srch_explore" type="text"
-                                                                        name="title"  id="id[surname]"
+                                                                        name="marks"  id="id[surname]"
                                                                         required="" maxlength="64"
                                                                         placeholder="Total Marks">
                                                                 </div>
@@ -46,7 +53,7 @@
                                                             <div class="ui search focus mt-30">
                                                                 <div class="ui left icon input swdh11 swdh19">
                                                                     <input class="prompt srch_explore" type="text"
-                                                                        name="title"  id="id[surname]"
+                                                                        name="weight"  id="id[surname]"
                                                                         required="" maxlength="64"
                                                                         placeholder="Total Weightage">
                                                                 </div>
@@ -60,7 +67,7 @@
                                             </div>
                                         </div>
                                         
-                                    <button class="save_btn" type="submit" name="delpro">Submit</button>
+                                    <button class="save_btn" type="submit" name="addeval">Submit</button>
                                     <form>
                                     </div>
                                 </div>
