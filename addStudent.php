@@ -89,7 +89,7 @@
                                                             <div class="ui search focus mt-30">
                                                                 <div class="ui left icon input swdh11 swdh19">
                                                                     <select class="ui hj145 dropdown cntry152 prompt srch_explore" name="gen">
-                                                                            <option value="0">Select Gender</option>
+                                                                            <option value="">Select Gender</option>
                                                                             <?php 
                                                                             foreach($res as $gen)
                                                                             {

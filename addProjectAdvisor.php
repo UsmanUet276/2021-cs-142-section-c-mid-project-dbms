@@ -7,6 +7,18 @@
     $res1 = db::getRecords($query);
     $query = "SELECT * FROM Project";
     $res2 = db::getRecords($query);
+    if(isset($_GET["status"]) && $_GET["status"]==1)
+    {
+        echo "<script>alert('Select All options')</script>";
+    }
+    if(isset($_GET["status"]) && $_GET["status"]==2)
+    {
+        echo "<script>alert('Same Advisor or Advisor role already assigned to project')</script>";
+    }
+    if(isset($_GET["status"]) && $_GET["status"]==3)
+    {
+        echo "<script>alert('Data Entered Succesfully!')</script>";
+    }
 ?>
        <div class="sa4d25">
             <div class="container-fluid">
@@ -30,7 +42,7 @@
                                                         <div class="col-lg-12">
                                                             <div class="ui search focus mt-30">
                                                                 <div class="ui left icon input swdh11 swdh19">
-                                                                    <select class="ui hj145 dropdown cntry152 prompt srch_explore" name="gen">
+                                                                    <select class="ui hj145 dropdown cntry152 prompt srch_explore" name="advrol">
                                                                             <option value="">Select Advisor Role</option>
 
                                                                             <?php 
@@ -47,7 +59,7 @@
                                                         <div class="col-lg-12">
                                                             <div class="ui search focus mt-30">
                                                                 <div class="ui left icon input swdh11 swdh19">
-                                                                    <select class="ui hj145 dropdown cntry152 prompt srch_explore" name="gen">
+                                                                    <select class="ui hj145 dropdown cntry152 prompt srch_explore" name="adv">
                                                                     <option value="">Select Advisor</option>
                                                                             <?php 
                                                                             foreach($res1 as $pro)
@@ -63,7 +75,7 @@
                                                         <div class="col-lg-12">
                                                             <div class="ui search focus mt-30">
                                                                 <div class="ui left icon input swdh11 swdh19">
-                                                                    <select class="ui hj145 dropdown cntry152 prompt srch_explore" name="gen">
+                                                                    <select class="ui hj145 dropdown cntry152 prompt srch_explore" name="pro">
                                                                     <option value="">Select Project Title</option>
                                                                             <?php 
                                                                             foreach($res2 as $pro)
@@ -84,7 +96,7 @@
                                             </div>
                                         </div>
                                         
-                                    <button class="save_btn" type="submit" name="addpro">Submit</button>
+                                    <button class="save_btn" type="submit" name="pa">Submit</button>
                                     <form>
                                     </div>
                                 </div>
