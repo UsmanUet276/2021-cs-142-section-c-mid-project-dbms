@@ -43,8 +43,9 @@
                                                             <div class="ui search focus mt-30">
                                                                 <div class="ui left icon input swdh11 swdh19">
                                                                     <select class="ui hj145 dropdown cntry152 prompt srch_explore" name="gen">
-                                                                    <option value="">Select Project Title</option>
+                                                                            
                                                                             <?php 
+                                                                            echo '<option value="">Select Project Title</option>';
                                                                             foreach($res2 as $pro)
                                                                             {
                                                                             
@@ -63,6 +64,7 @@
                                                                         required="" maxlength="64"
                                                                         placeholder="Roll Number">
                                                                 </div>
+                                                                <div class="help-block">Group will automatically be deleted after 100 years</div>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-12">
