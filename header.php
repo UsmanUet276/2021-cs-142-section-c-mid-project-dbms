@@ -58,7 +58,7 @@
         <div class="header_right">
         <ul>
                 <li>
-                    <a href="create_new_course.html" class="upload_btn" title="Create New Course">Create New Course</a>
+                    <a href="createStudentGroup.php" class="upload_btn" title="Create Student Group">Create Student Group</a>
                 </li>
                 <li class="ui dropdown">
                     <a href="#" class="opts_account" title="Account">
@@ -89,12 +89,7 @@
                                 </span>
                             </a>
                         </div>
-                        <a href="instructor_dashboard.html" class="item channel_item">Cursus dashboard</a>
-                        <a href="membership.html" class="item channel_item">Paid Memberships</a>
-                        <a href="setting.html" class="item channel_item">Setting</a>
-                        <a href="help.html" class="item channel_item">Help</a>
-                        <a href="feedback.html" class="item channel_item">Send Feedback</a>
-                        <a href="sign_in.html" class="item channel_item">Sign Out</a>
+                        <a href="EvaluateGroup.php" class="item channel_item">Evaluate Group</a>
                     </div>
                 </li>
             </ul>
@@ -122,9 +117,9 @@
                             <li class="sub_menu--item">
                                 <a href="addStudent.php" class="sub_menu--link">Add Student</a>
                             </li>
-                            <li class="sub_menu--item">
+                            <!-- <li class="sub_menu--item">
                                 <a href="delStudent.php" class="sub_menu--link">Delete Student</a>
-                            </li>
+                            </li> -->
                             <li class="sub_menu--item">
                                 <a href="updateStudent.php" class="sub_menu--link">Update Student</a>
                             </li>
@@ -142,9 +137,9 @@
                             <li class="sub_menu--item">
                                 <a href="addAdvisor.php" class="sub_menu--link">Add Advisor</a>
                             </li>
-                            <li class="sub_menu--item">
+                            <!-- <li class="sub_menu--item">
                                 <a href="deleteAdvisor.php" class="sub_menu--link">Delete Advisor</a>
-                            </li>
+                            </li> -->
                             <li class="sub_menu--item">
                                 <a href="updateAdvisor.php" class="sub_menu--link">Update Advisor</a>
                             </li>
@@ -162,9 +157,9 @@
                             <li class="sub_menu--item">
                                 <a href="addProject.php" class="sub_menu--link">Add Project</a>
                             </li>
-                            <li class="sub_menu--item">
+                            <!-- <li class="sub_menu--item">
                                 <a href="deleteProject.php" class="sub_menu--link">Delete Project</a>
-                            </li>
+                            </li> -->
                             <li class="sub_menu--item">
                                 <a href="updateProject.php" class="sub_menu--link">Update Project</a>
                             </li>
@@ -199,9 +194,9 @@
                             <li class="sub_menu--item">
                                 <a href="addEvaluation.php" class="sub_menu--link">Add Evaluation</a>
                             </li>
-                            <li class="sub_menu--item">
+                            <!-- <li class="sub_menu--item">
                                 <a href="delEvaluation.php" class="sub_menu--link">Delete Evaluation</a>
-                            </li>
+                            </li> -->
                             <li class="sub_menu--item">
                                 <a href="updateEvaluation.php" class="sub_menu--link">Update Evaluation</a>
                             </li>

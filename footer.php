@@ -1,14 +1,7 @@
 
-        <footer class="footer mt-40">
+        <footer class="footer mt-40" >
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="item_f1">
-                            <a href="terms_of_use.html">Copyright Policy</a>
-                            <a href="terms_of_use.html">Terms</a>
-                            <a href="terms_of_use.html">Privacy Policy</a>
-                        </div>
-                    </div>
                     <div class="col-lg-12">
                         <div class="footer_bottm">
                             <div class="row">
@@ -21,13 +14,10 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="edu_social_links">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-youtube"></i></a>
-                                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                        <a href="https://www.facebook.com/profile.php?id=100009124369906"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="https://www.linkedin.com/in/muhammad-usman-bin-farid-349110248/"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="https://www.instagram.com/usmanfarid123/"><i class="fab fa-instagram"></i></a>
+                                        <a href="https://www.youtube.com/@habibiprogrammers365"><i class="fab fa-youtube"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -36,7 +26,8 @@
                 </div>
             </div>
         </footer>
-    </div>
+        
+</div>
 
     <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="js/vertical-responsive-menu.min.js"></script>
