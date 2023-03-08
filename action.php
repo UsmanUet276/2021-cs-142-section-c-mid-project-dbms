@@ -114,6 +114,11 @@ else if (isset($_POST['editadv'])) {
     $gen = $_POST['gen'];
     $salary = $_POST['salary'];
     $des = $_POST['des'];
+
+    //cheack if salary is number
+    if (!is_numeric($salary)) {
+        echo "<script>location='editAdvisor.php?status=2'</script>";
+    }
     session_start();
     $id = $_SESSION["Id"];
     $query = "UPDATE Person SET FirstName = '$name', LastName = '$surname', Contact = '$pno', DateOfBirth = '$dob', Gender='$gen' Where Id = $id";
@@ -258,16 +263,25 @@ else if (isset($_POST['addstuGroup'])) {
 else if (isset($_POST['delStuGroup'])) {
     $roll = $_POST['roll'];
 
-    $query = "SELECT COUNT(*) FROM GroupStudent WHERE StudentId = (SELECT Id FROM Student WHERE RegistrationNo = '$roll') and [Status] = (SELECT Id FROM Lookup WHERE Category = 'STATUS' and [Value] = 'Active')";
+    $query = "SELECT COUNT(*) FROM GroupStudent WHERE StudentId = (SELECT Id FROM Student WHERE RegistrationNo = '$roll') and [Status] = (SELECT Id FROM Lookup WHERE Category = 'STATUS' and [Value] = 'Active') ";
     $res = db::getRecord($query);
 
     if ($res[''] == 0) {
         echo "<script>location='delStuToGroup.php?status=1'</script>";
     } 
     else {
-        $query = "UPDATE GroupStudent SET [Status] = (SELECT Id FROM Lookup WHERE Category = 'STATUS' and [Value] = 'InActive')";
-        $res = db::updateRecord($query);
-        echo "<script>location='delStuToGroup.php?status=2'</script>";
+        $query = "SELECT COUNT(*) FROM GroupStudent WHERE [Status] = (SELECT Id FROM Lookup WHERE Category = 'STATUS' and [Value] = 'Active') and GroupId = (SELECT GroupId FROM GroupStudent WHERE StudentId = (SELECT Id FROM Student WHERE RegistrationNo = '$roll') and [Status] = (SELECT Id FROM Lookup WHERE Category = 'STATUS' and [Value] = 'Active'))";
+        $res = db::getRecord($query);
+        if($res[''] <= 1)
+        {
+            echo "<script>location='delStuToGroup.php?status=3'</script>";
+        }
+        else
+        {
+            $query = "UPDATE GroupStudent SET [Status] = (SELECT Id FROM Lookup WHERE Category = 'STATUS' and [Value] = 'InActive')";
+            $res = db::updateRecord($query);
+            echo "<script>location='delStuToGroup.php?status=2'</script>";
+        }
     }
 } 
 else if (isset($_POST['addeval'])) {
@@ -275,6 +289,10 @@ else if (isset($_POST['addeval'])) {
     $marks = $_POST['marks'];
     $weight = $_POST['weight'];
 
+    //cheack if marks and weightage is integer or not
+    if (!is_numeric($marks) || !is_numeric($weight)) {
+        echo "<script>location='addEvaluation.php?status=3'</script>";
+    }
     $query = "SELECT COUNT(*) FROM Evaluation WHERE [Name] = '$name'";
     $res = db::getRecord($query);
     if ($res[''] > 0) {
@@ -330,6 +348,10 @@ else if (isset($_POST['adv'])) {
     $gender = $_POST['gen'];
     $salary = $_POST['salary'];
     $des = $_POST['des'];
+    //check if salary is integer or not
+    if (!is_numeric($salary)) {
+        echo "<script>location='addAdvisor.php?status=4'</script>";
+    }
     $query = "SELECT * FROM Person WHERE Email = '$email'";
     $res = db::getRecords($query);
     $count = 0;
@@ -339,7 +361,6 @@ else if (isset($_POST['adv'])) {
     foreach ($res as $t) {
         $count++;
     }
-    echo $count;
     if ($count >= 1) {
         echo "<script>location='addAdvisor.php?status=2'</script>";
     } 
@@ -358,12 +379,17 @@ else if(isset($_POST['addgroeval'])){
     $eval = $_POST['eval'];
     $group = $_POST['group'];
     $marks = $_POST['marks'];
+    //cheack if marks is integer or not
+    if(!is_numeric($marks))
+    {
+        echo "<script>location='EvaluateGroup.php?status=5'</script>";
+    }
     if($eval == "" || $group == "")
     {
         echo "<script>location='EvaluateGroup.php?status=3'</script>";
     }
     $query = "SELECT TotalMarks FROM Evaluation where Id = $eval";
-    $res = db::getRecords($query);
+    $res = db::getRecord($query);
     if($res['TotalMarks'] < $marks)
     {
         echo "<script>location='EvaluateGroup.php?status=4'</script>";
@@ -378,5 +404,37 @@ else if(isset($_POST['addgroeval'])){
         $res = db::insertRecord($query);
         echo "<script>location='EvaluateGroup.php?status=2'</script>";
     }
+}
+else if(isset($_POST['upev']))
+{
+    $name = $_POST['title'];
+
+    $query = "SELECT COUNT(*) FROM Evaluation WHERE [Name] = '$name'";
+    $res = db::getRecord($query);
+    if($res[''] == 0){
+        echo "<script>location='updateEvaluation.php?status=1'</script>";
+    }
+    else{
+        $query = "SELECT Id FROM Evaluation WHERE [Name] = '$name'";
+        $res = db::getRecord($query);
+        session_start();
+        $_SESSION['Id'] = $res['Id'];
+        echo "<script>location='editEvaluation.php'</script>";
+    }
+}
+else if(isset($_POST['edev']))
+{
+    $marks = $_POST['marks'];
+    $weight = $_POST['weight'];
+    session_start();
+    $id = $_SESSION["Id"];
+    if(!is_numeric($marks) || !is_numeric($weight))
+    {
+        echo "<script>location='editEvaluation.php?status=1'</script>";
+    }
+    $query = "UPDATE Evaluation SET TotalMarks = $marks, TotalWeightage = $weight WHERE Id = $id";
+    $res = db::updateRecord($query);
+    session_destroy();
+    echo "<script>location='updateEvaluation.php?status=2'</script>";
 }
 ?>

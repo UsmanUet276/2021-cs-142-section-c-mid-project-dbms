@@ -1,7 +1,7 @@
 <?php
     include("header.php");
     include("database.php");
-    $query = "SELECT * FROM Student AS s INNER JOIN Person AS p ON s.Id = p.Id";
+    $query = "SELECT * FROM Student AS s INNER JOIN Person AS p ON s.Id = p.Id ORDER BY s.RegistrationNo";
     $res = db::getRecords($query);
 ?>
 <div class="sa4d25">
