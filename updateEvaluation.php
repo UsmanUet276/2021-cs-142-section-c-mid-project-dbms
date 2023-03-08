@@ -2,6 +2,10 @@
     include("header.php");
     include("database.php");
     
+    if(isset($_GET["status"]) && $_GET["status"]==2)
+    {
+        echo "<script>alert('Data Entered Successfully')</script>";
+    }
 ?>
        <div class="sa4d25">
             <div class="container-fluid">
@@ -40,7 +44,7 @@
                                             </div>
                                         </div>
                                         
-                                    <button class="save_btn" type="submit" name="delpro">Submit</button>
+                                    <button class="save_btn" type="submit" name="upev">Submit</button>
                                     <form>
                                     </div>
                                 </div>

@@ -14,6 +14,9 @@ if (isset($_GET["status"]) && $_GET["status"] == 2) {
 if (isset($_GET["status"]) && $_GET["status"] == 3) {
     echo "<script>alert('Fill Gender and Designation')</script>";
 }
+if(isset($_GET["status"]) && $_GET["status"] == 4){
+    echo "<script>alert('Add salary in numeric form')</script>";
+}
 ?>
 <div class="sa4d25">
     <div class="container-fluid">

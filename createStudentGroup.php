@@ -64,7 +64,7 @@
                                                                         required="" maxlength="64"
                                                                         placeholder="Roll Number">
                                                                 </div>
-                                                                <div class="help-block">Group will automatically be deleted after 100 years</div>
+                                                                <div class="help-block"></div>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-12">

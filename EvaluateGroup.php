@@ -21,6 +21,10 @@
     {
         echo "<script>alert('Marks entered is greater than total marks')</script>";
     }
+    if(isset($_GET["status"]) && $_GET["status"]==5)
+    {
+        echo "<script>alert('Marks entered are not in numeric form')</script>";
+    }
 ?>
        <div class="sa4d25">
             <div class="container-fluid">

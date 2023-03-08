@@ -10,6 +10,10 @@
     {
         echo "<script>alert('Removed!')</script>";
     }
+    if(isset($_GET["status"]) && $_GET["status"]==3)
+    {
+        echo "<script>alert('Sorry You cant remove student because there is only one in this group')</script>";
+    }
 ?>
        <div class="sa4d25">
             <div class="container-fluid">
