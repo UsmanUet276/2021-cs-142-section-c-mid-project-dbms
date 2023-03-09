@@ -50,13 +50,16 @@
             <div class="ui search">
                 <div class="ui left icon input swdh10">
                     <input class="prompt srch10" type="text"
-                        placeholder="Search for Tuts Videos, Tutors, Tests and more..">
+                        placeholder="Search Will implement soon">
                     <i class='uil uil-search-alt icon icon1'></i>
                 </div>
             </div>
         </div>
         <div class="header_right">
         <ul>
+                <li>
+                    <a href="EvaluateGroup.php" class="upload_btn" title="Evaluate Group">Evaluate Group</a>
+                </li>
                 <li>
                     <a href="createStudentGroup.php" class="upload_btn" title="Create Student Group">Create Student Group</a>
                 </li>
@@ -89,7 +92,13 @@
                                 </span>
                             </a>
                         </div>
-                        <a href="EvaluateGroup.php" class="item channel_item">Evaluate Group</a>
+                        <a href="advisorproject.php" class="item channel_item">Advisor and Project</a>
+                        <a href="stuevaluation.php" class="item channel_item">Student and Evaluation</a>
+                        <a href="notingrp.php" class="item channel_item">Student Not In Group</a>
+                        <a href="stuAdvisor.php" class="item channel_item">Student and Their Advisors</a>
+                        <a href="unassProj.php" class="item channel_item">Unsassigned Projects</a>
+                        <a href="fstudent.php" class="item channel_item">Failed Students</a>
+                        <a href="topgrp.php" class="item channel_item">Top Groups</a>
                     </div>
                 </li>
             </ul>
@@ -110,7 +119,7 @@
                     </li>
                     <li class="menu--item  menu--item__has_sub_menu">
                         <label class="menu--link" title="Tests">
-                            <i class='uil uil-clipboard-alt menu--icon'></i>
+                            <i class='uil uil-wallet menu--icon'></i>
                             <span class="menu--label">Manage Student</span>
                         </label>
                         <ul class="sub_menu">
@@ -170,7 +179,7 @@
                     </li>
                     <li class="menu--item  menu--item__has_sub_menu">
                         <label class="menu--link" title="Tests">
-                            <i class='uil uil-clipboard-alt menu--icon'></i>
+                            <i class='uil uil-plus-circle menu--icon'></i>
                             <span class="menu--label">Manage Group</span>
                         </label>
                         <ul class="sub_menu">
@@ -187,7 +196,7 @@
                     </li>
                     <li class="menu--item  menu--item__has_sub_menu">
                         <label class="menu--link" title="Tests">
-                            <i class='uil uil-clipboard-alt menu--icon'></i>
+                            <i class='uil uil-file-alt menu--icon'></i>
                             <span class="menu--label">Manage Evaluation ethos</span>
                         </label>
                         <ul class="sub_menu">
@@ -242,28 +251,36 @@
                             <i class='uil uil-check-circle menu--icon'></i>
                             <span class="menu--label">Verification</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="menu--item  menu--item__has_sub_menu">
                         <label class="menu--link" title="Tests">
-                            <i class='uil uil-clipboard-alt menu--icon'></i>
-                            <span class="menu--label">Manage Student</span>
+                            <i class='uil uil-check-circle menu--icon'></i>
+                            <span class="menu--label">Generate Reports</span>
                         </label>
                         <ul class="sub_menu">
-                            <li class="sub_menu--item">
-                                <a href="certification_center.html" class="sub_menu--link">Certification Center</a>
+                        <li class="sub_menu--item">
+                                <a href="advisorproject.php" class="sub_menu--link">Advisor and Project</a>
                             </li>
                             <li class="sub_menu--item">
-                                <a href="certification_start_form.html" class="sub_menu--link">Certification Fill
-                                    Form</a>
+                                <a href="stuevaluation.php" class="sub_menu--link">Student and Evaluation</a>
                             </li>
                             <li class="sub_menu--item">
-                                <a href="certification_test_view.html" class="sub_menu--link">Test View</a>
+                                <a href="notingrp.php" class="sub_menu--link">Student Not In Group</a>
                             </li>
                             <li class="sub_menu--item">
-                                <a href="certification_test__result.html" class="sub_menu--link">Test Result</a>
+                                <a href="stuAdvisor.php" class="sub_menu--link">Student and Their Advisors</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="unassProj.php" class="sub_menu--link">Unsassigned Projects</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="fstudent.php" class="sub_menu--link">Failed Students</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="topgrp.php" class="sub_menu--link">Top Groups</a>
                             </li>
                         </ul>
-                    </li> -->
+                    </li>
                 </ul>
             </div>
             <div class="left_section pt-2">

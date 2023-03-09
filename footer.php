@@ -1,5 +1,5 @@
 
-        <footer class="footer mt-40" >
+        <footer class="footer mt-40">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
@@ -8,7 +8,7 @@
                                 <div class="col-md-6">
                                     <ul class="fotb_left">
                                         <li>
-                                            <p>© 2023 <strong>Made by ❤️</strong>. All Rights Reserved.</p>
+                                            <p>© 2023 FinalTrack. <strong>Made With ❤️</strong> in UET.</p>
                                         </li>
                                     </ul>
                                 </div>
