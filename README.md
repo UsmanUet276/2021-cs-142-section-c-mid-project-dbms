@@ -1,92 +1,60 @@
-# 2021-cs-142-section-c-mid-project-dbms
+# :card_index: 2021-CS-142 (Mid Project DBMS):card_index:
+
+## Case Study :clipboard:
+
+Department of Computer Science UET Lahore holds committee for management of
+final year project. Each year, list of project titles is opened for the students by the
+committee after the compilation of ideas from the faculty members. Students are
+privileged to form the group and select any of the ideas from the list after approval
+from the faculty advisor. Once the project is selected by a group of students, an
+advisory board is assigned to the project which consists of main advisor, co-advisor,
+and industry advisor. Throughout the year, multiple evaluations are taken against
+the project. Currently, this process is managed through spread sheets. You are
+supposed to streamline the above process that will be operated by the member
+of project committee to manage data at one place. Following features will be
+implemented in the application:
+
+* Manage Students
+* Manage Advisors
+* Manage Projects
+* Formation of Student Group and its management
+* Assignment of project to a group of students
+*  Assignment of multiple advisors to the project
+*  Manage Evaluations
+* Mark the evaluations against a group 
+
+And any other feature that can be helpful for the management of final year projects after discussion with the committee. Final year project committee also requires multiple reports in pdf form that may include:
+
+* List of projects along with advisory board and list of students
+* Marks sheet of projects that shows the marks in each evaluation against each student and project
+
+any other reports that you can help the committee to streamline the process.
 
 
 
-## Getting started
+## Database
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+#### Script
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Database scripts are available at http://bit.ly/ProjectADbs 
 
-## Add your files
+## Collaboration:heavy_check_mark:
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+Collaboration in the above case study involved working with Mr. Nazeef Ul Haq,
+who was the instructor for the project. Mr. Nazeef Ul Haq provided the case
+study and explained the schema and database for the project. As the developer
+of the project, I collaborated closely with Mr. Nazeef Ul Haq throughout the
+development process.
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/UsmanUet276/2021-cs-142-section-c-mid-project-dbms.git
-git branch -M main
-git push -uf origin main
-```
 
-## Integrate with your tools
 
-- [ ] [Set up project integrations](https://gitlab.com/UsmanUet276/2021-cs-142-section-c-mid-project-dbms/-/settings/integrations)
+## Conclusion
 
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+The Final Year Project Management System will provide an efficient way for the
+Department of Computer Science at UET Lahore to manage final year projects.
+The system will help streamline project management by providing features such as
+student and advisor management, project management, student group formation,
+project assignment, evaluation management, and marking. The system will also
+generate reports in PDF format for easy access to project information. The system
+can be extended to include additional features such as project progress tracking,
+resource allocation, communication tools, and project budget management.
