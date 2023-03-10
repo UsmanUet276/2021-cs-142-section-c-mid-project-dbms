@@ -38,7 +38,7 @@ any other reports that you can help the committee to streamline the process.
 
 Database scripts are available at http://bit.ly/ProjectADbs 
 
-## Collaboration:heavy_check_mark:
+## Collaboration :heavy_check_mark:
 
 Collaboration in the above case study involved working with Mr. Nazeef Ul Haq,
 who was the instructor for the project. Mr. Nazeef Ul Haq provided the case
