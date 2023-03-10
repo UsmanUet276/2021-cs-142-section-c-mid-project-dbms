@@ -179,6 +179,31 @@ else if (isset($_POST['editadv'])) {
     //redirecting to updateAdvisor.php
     echo "<script>location='updateAdvisor.php?status=3'</script>";
 } 
+//delete advisor
+// else if (isset($_POST['deladv'])) {
+//     //variables get from post request
+//     $email = $_POST['email'];
+//     //getting advisor record from database
+//     $query = "SELECT Id FROM Person WHERE Email = $email";
+//     $res = db::getRecord($query);
+
+//     //if advisor record exists
+//     if ($res != false) {
+//         //getting id from database object
+//         $res = $res['Id'];
+//         //deleting advisor record from database
+//         $query = "DELETE FROM Adv WHERE Id = $res";
+//         $result = db::deleteRecords($query);
+//         $query = "DELETE FROM Person WHERE Id = $res";
+//         $result = db::deleteRecords($query);
+//         //redirecting to delAdvisor.php
+//         echo "<script>location='delAdvisor.php?status=1'</script>";
+//     } 
+//     else {
+//         //redirecting to delAdvisor.php
+//         echo "<script>location='delAdvisor.php?status=2'</script>";
+//     }
+// } 
 //add project
 else if (isset($_POST['addpro'])) {
     //variables get from post request
@@ -198,21 +223,33 @@ else if (isset($_POST['addpro'])) {
     //redirecting to addProject.php
     echo "<script>location='addProject.php?status=1'</script>";
 } 
-//update project
+
+// else if (isset($_POST['delpro'])) {
+//     $title = $_POST['title'];
+
+//     $query = "SELECT COUNT(*) FROM Project WHERE [Title] = '$title'";
+//     $res = db::getRecord($query);
+
+//     if ($res[''] > 0) {
+//         $query = "DELETE FROM Project where Title = '$title'";
+//         $res = db::deleteRecord($query);
+//         echo "<script>location='deleteProject.php?status=1'</script>";
+//     } 
+//     else {
+//         echo "<script>location='deleteProject.php?status=2'</script>";
+//     }
+// } 
 else if (isset($_POST['uppro'])) {
-    //variables get from post request
     $title = $_POST['title'];
     $des = $_POST['des'];
     $gen = $_POST['gen'];
-    //cheaking if gender selected
+    echo "<script>alert('" . $gen . "')</script>";
     if ($gen == 0) {
         echo "<script>location='updateProject.php?status=5'</script>";
     } 
-    //cheak if title and description is empty
     else if ($title == "" && $des == "") {
         echo "<script>location='updateProject.php?status=1'</script>";
     } 
-    //cheak if title is empty anf setting description and Id
     else if ($title == "") {
         $query = "UPDATE Project SET Description = '$des' where Id = '$gen'";
         $re = db::updateRecord($query);
@@ -229,29 +266,24 @@ else if (isset($_POST['uppro'])) {
         echo "<script>location='updateProject.php?status=4'</script>";
     }
 } 
-//create group
 else if (isset($_POST['creGroup'])) {
-    //variables get from post request
     $gen = $_POST['gen'];
     $roll = $_POST['roll'];
 
     if ($gen == "") {
         echo "<script>location='createStudentGroup.php?status=1'</script>";
     }
-    //getting student count from database
     $query = "SELECT COUNT(*) FROM Student WHERE RegistrationNo = '$roll'";
     $r = db::getRecord($query);
     if ($r[''] == 0) {
         echo "<script>location='createStudentGroup.php?status=2'</script>";
     }
-    //getting student count from database
     $query = "SELECT COUNT(*) FROM GroupStudent WHERE StudentId = (SELECT Id FROM Student WHERE RegistrationNo = '$roll') and [Status] = (SELECT Id FROM Lookup Where Category = 'STATUS' and Value='Active')";
     $r = db::getRecord($query);
     if ($r[''] > 0) {
         echo "<script>location='createStudentGroup.php?status=3'</script>";
     } 
     else {
-        //inserting group record in database
         $query = "INSERT INTO [Group] (Created_On) VALUES (getdate())";
         $res = db::insertRecord($query);
         $query = "INSERT INTO GroupStudent (GroupId,StudentId, [Status] , AssignmentDate) 
@@ -260,13 +292,11 @@ else if (isset($_POST['creGroup'])) {
         (SELECT Id FROM Lookup WHERE Category = 'STATUS' and [Value] = 'Active'), getdate())";
         $res = db::insertRecord($query);
 
-        //inserting group project record in database
         $query = "INSERT INTO GroupProject (ProjectId, GroupId, AssignmentDate) VALUES ('$gen',(SELECT MAX(Id) FROM [Group]), getdate())";
         $res = db::insertRecord($query);
         echo "<script>location='createStudentGroup.php?status=4'</script>";
     }
 } 
-//add student to group
 else if (isset($_POST['addstuGroup'])) {
     $id = $_POST['gen'];
     $roll = $_POST['roll'];
@@ -274,25 +304,21 @@ else if (isset($_POST['addstuGroup'])) {
     if ($id == "") {
         echo "<script>location='addStuToGroup.php?status=1'</script>";
     }
-    //getting student count from database
     $query = "SELECT COUNT(*) FROM Student WHERE RegistrationNo = '$roll'";
     $res = db::getRecord($query);
-    //if student record does not exists
     if ($res[''] == 0) {
         echo "<script>location='addStuToGroup.php?status=2'</script>";
     }
-//getting student count from database
+
     $query = "SELECT COUNT(*) FROM GroupStudent 
         WHERE StudentId = (SELECT Id FROM Student WHERE RegistrationNo = '$roll') 
         and 
         [Status] = (SELECT Id FROM Lookup WHERE Category = 'STATUS' and [Value] = 'Active')";
     $res = db::getRecord($query);
     if ($res[''] > 0) {
-        
         echo "<script>location='addStuToGroup.php?status=4'</script>";
     }
 
-    //inserting group student record in database
     $query = "INSERT INTO GroupStudent (GroupId,StudentId, [Status] , AssignmentDate) 
         VALUES ('$id' , 
         (SELECT Id FROM Student WHERE RegistrationNo = '$roll'),
@@ -300,11 +326,9 @@ else if (isset($_POST['addstuGroup'])) {
     $res = db::insertRecord($query);
     echo "<script>location='addStuToGroup.php?status=3'</script>";
 } 
-//delete student from group
 else if (isset($_POST['delStuGroup'])) {
     $roll = $_POST['roll'];
 
-    //getting student count from database
     $query = "SELECT COUNT(*) FROM GroupStudent WHERE StudentId = (SELECT Id FROM Student WHERE RegistrationNo = '$roll') and [Status] = (SELECT Id FROM Lookup WHERE Category = 'STATUS' and [Value] = 'Active') ";
     $res = db::getRecord($query);
 
@@ -312,7 +336,6 @@ else if (isset($_POST['delStuGroup'])) {
         echo "<script>location='delStuToGroup.php?status=1'</script>";
     } 
     else {
-        //getting student count from database
         $query = "SELECT COUNT(*) FROM GroupStudent WHERE [Status] = (SELECT Id FROM Lookup WHERE Category = 'STATUS' and [Value] = 'Active') and GroupId = (SELECT GroupId FROM GroupStudent WHERE StudentId = (SELECT Id FROM Student WHERE RegistrationNo = '$roll') and [Status] = (SELECT Id FROM Lookup WHERE Category = 'STATUS' and [Value] = 'Active'))";
         $res = db::getRecord($query);
         if($res[''] <= 1)
@@ -321,14 +344,12 @@ else if (isset($_POST['delStuGroup'])) {
         }
         else
         {
-            //updating group student record in database
             $query = "UPDATE GroupStudent SET [Status] = (SELECT Id FROM Lookup WHERE Category = 'STATUS' and [Value] = 'InActive')";
             $res = db::updateRecord($query);
             echo "<script>location='delStuToGroup.php?status=2'</script>";
         }
     }
 } 
-//add evaluation
 else if (isset($_POST['addeval'])) {
     $name = $_POST['name'];
     $marks = $_POST['marks'];
@@ -338,44 +359,52 @@ else if (isset($_POST['addeval'])) {
     if (!is_numeric($marks) || !is_numeric($weight)) {
         echo "<script>location='addEvaluation.php?status=3'</script>";
     }
-    //getting student count from database
     $query = "SELECT COUNT(*) FROM Evaluation WHERE [Name] = '$name'";
     $res = db::getRecord($query);
     if ($res[''] > 0) {
         echo "<script>location='addEvaluation.php?status=1'</script>";
     } 
     else {
-        //inserting evaluation record in database
         $query = "INSERT INTO Evaluation ([Name],TotalMarks, TotalWeightage) VALUES ('$name','$marks','$weight')";
         $res = db::insertRecord($query);
         echo "<script>location='addEvaluation.php?status=2'</script>";
     }
 } 
-//add project advisor
+else if (isset($_POST['deleval'])) {
+    $name = $_POST['title'];
+
+    $query = "SELECT COUNT(*) FROM Evaluation WHERE [Name] = '$name'";
+    $res = db::getRecord($query);
+    if ($res[''] == 0) {
+        echo "<script>location='delEvaluation.php?status=1'</script>";
+    } 
+    else {
+        $query = "DELETE FROM Evaluation WHERE [Name] = '$name'";
+        $res = db::deleteRecord($query);
+        echo "<script>location='delEvaluation.php?status=2'</script>";
+    }
+} 
 else if (isset($_POST['pa'])) {
     $advrol = $_POST['advrol'];
     $adv = $_POST['adv'];
     $pro = $_POST['pro'];
 
-    //cheak if any field is empty
+
     if ($advrol == "" || $adv == "" || $pro == "") {
         echo "<script>location='addProjectAdvisor.php?status=1'</script>";
     } 
     else {
-        //getting project advisor count from database
         $query = "SELECT COUNT(*) FROM ProjectAdvisor WHERE ProjectId = '$pro' and (AdvisorId = '$adv' or AdvisorRole='$advrol')";
         $res = db::getRecord($query);
         if ($res[''] > 0) {
             echo "<script>location='addProjectAdvisor.php?status=2'</script>";
         } else {
-            //inserting project advisor record in database
             $query = "INSERT INTO ProjectAdvisor (AdvisorId, ProjectId, AdvisorRole,AssignmentDate) VALUES ('$adv','$pro','$advrol',getdate())";
             $res = db::insertRecord($query);
             echo "<script>location='addProjectAdvisor.php?status=3'</script>";
         }
     }
 } 
-//add advisor
 else if (isset($_POST['adv'])) {
     $name = $_POST['name'];
     $surname = $_POST['surname'];
@@ -389,11 +418,9 @@ else if (isset($_POST['adv'])) {
     if (!is_numeric($salary)) {
         echo "<script>location='addAdvisor.php?status=4'</script>";
     }
-    //check if email is valid or not
     $query = "SELECT * FROM Person WHERE Email = '$email'";
     $res = db::getRecords($query);
     $count = 0;
-    //check if any field is empty
     if ($gender == 0 || $des == 0) {
         echo "<script>location='addAdvisor.php?status=3'</script>";
     }
@@ -404,7 +431,7 @@ else if (isset($_POST['adv'])) {
         echo "<script>location='addAdvisor.php?status=2'</script>";
     } 
     else {
-        //inserting advisor record in database
+
         $query = "INSERT INTO Person(FirstName, LastName, Contact, Email, DateOfBirth,Gender) values('$name','$surname','$pno','$email','$dob','$gender')";
         $res = db::insertRecords($query);
         $query = "INSERT INTO Advisor(Id, Designation, Salary) values((SELECT MAX(Id) FROM Person) ,'$des','$salary')";
@@ -414,7 +441,6 @@ else if (isset($_POST['adv'])) {
     
 
 }
-//add group evaluation
 else if(isset($_POST['addgroeval'])){
     $eval = $_POST['eval'];
     $group = $_POST['group'];
@@ -424,68 +450,56 @@ else if(isset($_POST['addgroeval'])){
     {
         echo "<script>location='EvaluateGroup.php?status=5'</script>";
     }
-    //cheack if any field is empty
     if($eval == "" || $group == "")
     {
         echo "<script>location='EvaluateGroup.php?status=3'</script>";
     }
-    //cheack if marks is greater than total marks
     $query = "SELECT TotalMarks FROM Evaluation where Id = $eval";
     $res = db::getRecord($query);
     if($res['TotalMarks'] < $marks)
     {
         echo "<script>location='EvaluateGroup.php?status=4'</script>";
     }
-    //getting group evaluation count from database
     $query = "SELECT COUNT(*) FROM GroupEvaluation WHERE EvaluationId = $eval and GroupId = $group";
     $res = db::getRecord($query);
     if($res[''] > 0){
         echo "<script>location='EvaluateGroup.php?status=1'</script>";
     }
     else{
-        //inserting group evaluation record in database
         $query = "INSERT INTO GroupEvaluation (GroupId,EvaluationId,ObtainedMarks, EvaluationDate) VALUES ($group,$eval,$marks,getdate())";
         $res = db::insertRecord($query);
         echo "<script>location='EvaluateGroup.php?status=2'</script>";
     }
 }
-//update evaluation
 else if(isset($_POST['upev']))
 {
     $name = $_POST['title'];
-    //getting evaluation count from database
+
     $query = "SELECT COUNT(*) FROM Evaluation WHERE [Name] = '$name'";
     $res = db::getRecord($query);
     if($res[''] == 0){
         echo "<script>location='updateEvaluation.php?status=1'</script>";
     }
     else{
-        //getting evaluation id from database
         $query = "SELECT Id FROM Evaluation WHERE [Name] = '$name'";
         $res = db::getRecord($query);
-        //storing evaluation id in session
         session_start();
         $_SESSION['Id'] = $res['Id'];
         echo "<script>location='editEvaluation.php'</script>";
     }
 }
-//edit evaluation
 else if(isset($_POST['edev']))
 {
     $marks = $_POST['marks'];
     $weight = $_POST['weight'];
-    //getting evaluation id from session
     session_start();
     $id = $_SESSION["Id"];
-    //cheack if marks and weight is integer or not
     if(!is_numeric($marks) || !is_numeric($weight))
     {
         echo "<script>location='editEvaluation.php?status=1'</script>";
     }
-    //updating evaluation record in database
     $query = "UPDATE Evaluation SET TotalMarks = $marks, TotalWeightage = $weight WHERE Id = $id";
     $res = db::updateRecord($query);
-    //destroying session
     session_destroy();
     echo "<script>location='updateEvaluation.php?status=2'</script>";
 }

@@ -1,19 +1,25 @@
 <?php
+//including header
 include("header.php");
 include("database.php");
+//selecting all the records from lookup table
 $query = "SELECT * FROM Lookup where Category = 'DESIGNATION'";
 $res = db::getRecords($query);
 $query = "SELECT * FROM Lookup where Category = 'GENDER'";
 $res1 = db::getRecords($query);
+//if status is 1 then data entered
 if (isset($_GET["status"]) && $_GET["status"] == 1) {
     echo "<script>alert('Data Entered Successfully')</script>";
 }
+//if status is 2 then advisor already exists
 if (isset($_GET["status"]) && $_GET["status"] == 2) {
     echo "<script>alert('Advisor Already Exists')</script>";
 }
+//if status is 3 then fill gender and designation
 if (isset($_GET["status"]) && $_GET["status"] == 3) {
     echo "<script>alert('Fill Gender and Designation')</script>";
 }
+//if status is 4 then add salary in numeric form
 if(isset($_GET["status"]) && $_GET["status"] == 4){
     echo "<script>alert('Add salary in numeric form')</script>";
 }
